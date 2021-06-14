@@ -3,4 +3,9 @@ node_js:
   - "8"
 before_script:
   - npm install
-script: npm run build
+jobs:
+  include:
+    - stage: build
+      script: npm run build
+    - stage: deploy
+      script: npm run build
