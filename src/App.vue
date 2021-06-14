@@ -17,7 +17,8 @@ export default {
     let val = ref('');
     const todos = reactive([
       {id: 0, title: "吃饭", done: false},
-      {id: 1, title: "睡觉", done: false}
+      {id: 1, title: "睡觉", done: false},
+      {id: 2, title: "喝水", done: false}
     ])
     function addTodo () {
       todos.push({
