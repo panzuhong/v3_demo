@@ -12,4 +12,4 @@ jobs:
     - stage: build
       script: npm run build
     - state: deploy
-      script: sh ./ci/build.sh
+      script: sh ./ci/deploy.sh
