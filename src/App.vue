@@ -3,7 +3,7 @@
     <input type="text" v-model="val" @keyup.enter="addTodo"/>
     <ul>
       <li v-for="todo in todos" :key="todo.id">
-        {{todo.title}} 
+        {{todo.title}}  
       </li>
     </ul>
   </div>
