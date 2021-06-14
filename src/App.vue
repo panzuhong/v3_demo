@@ -1,26 +1,53 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <input type="text" v-model="val" @keyup.enter="addTodo"/>
+    <ul>
+      <li v-for="todo in todos" :key="todo.id">
+        {{todo.title}}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import {reactive, ref} from 'vue';
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  setup () {
+    let val = ref('');
+    const todos = reactive([
+      {id: 0, title: "吃饭", done: false},
+      {id: 1, title: "睡觉", done: false}
+    ])
+    function addTodo () {
+      todos.push({
+        id: todos.length,
+        title: val.value,
+        done: false
+      });
+      val.value = '';
+    }
+    return {val, todos, addTodo}
   }
+  // data () {
+  //   return {
+  //     val: "",
+  //     todos: [
+  //       {id: 0, title: "吃饭", done: false},
+  //       {id: 1, title: "睡觉", done: false}
+  //     ]
+  //   }
+  // },
+  // methods: {
+  //   addTodo () {
+  //     this.todos.push({
+  //       id: this.todos.length,
+  //       title: this.val,
+  //       done: false
+  //     });
+  //     this.val = '';
+  //   }
+  // }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
