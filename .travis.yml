@@ -8,9 +8,8 @@ cache:
 jobs:
   include:
     - stage: test
-      script: console.log('test!!')
+      script: ./ci/test.sh
     - stage: build
       script: npm run build
     - state: deploy
-      script: ./build.sh
-      
+      script: ./ci/build.sh
