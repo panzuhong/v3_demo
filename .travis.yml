@@ -4,15 +4,13 @@ node_js:
 cache:
   directories:
   - node_modules
-install:
-- npm install
-before_script: 
 
-script:
-- npm run build
-
-after_script: 
-
-branches:
-  only:
-  - master
+jobs:
+  include:
+    - stage: test
+      script: console.log('test!!')
+    - stage: build
+      script: npm run build
+    - state: deploy
+      script: ./build.sh
+      
